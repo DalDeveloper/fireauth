@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding text-center>
+  <form [formGroup]="loginForm" (submit)="loginWithEmail()" novalidate>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input formControlName="email" type="email" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+      <p>Please enter a valid email.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+      <p>Your password needs more than 6 characters.</p>
+      </ion-item>
+    </ion-list>
+    <button ion-button block type="submit">Login</button>
+  </form>
+  <button ion-button block clear (click)="gotoforgetPassword()">
+    I forgot my password :-(
+  </button>
+  <button ion-button block clear (click)="registerWithEmail()">
+    Create a new account
+  </button>
+  <hr>
+  <div>
+    <h3>Other Login Methods</h3>
+    <button ion-button block (click)="loginWithFB()">Facebook</button>
+    <button ion-button block (click)="loginWithTW()">Twitter</button>
+    <button ion-button block (click)="loginWithGP()">Google Plus</button>
+  </div>    
+
+</ion-content>
